@@ -1,0 +1,86 @@
+---
+title: "Visual Analysis"
+execute: 
+  echo: false
+---
+
+```{r}
+#| message: false
+#| label: setup
+#| warning: false
+
+library(tidybayes)
+library(tidyverse)
+library(brms)
+```
+
+```{r}
+raw_df <- read_csv("data/AmazonSalesData.csv", show_col_types = FALSE)
+```
+
+## Visual Representation
+
+```{r}
+#| label: cleaning
+
+AmazonSales <- raw_df |>
+  rename(`Manufacturing Cost` = `Unit Cost`,
+         Total_Profit = `Total Profit`,
+         Sales_Channel = `Sales Channel`) |>
+  select(Sales_Channel, `Manufacturing Cost`, Total_Profit, `Order Priority`) |> 
+  mutate(`Order Priority` = recode(`Order Priority`,
+                                   "H" = "High Priority",
+                                   "C" = "Critical Priority",
+                                   "L" = "Low Priority",
+                                   "M" = "Medium Priority"))
+
+```
+
+```{r}
+#| cache: true
+fit_cs <- brm(formula = Total_Profit ~ Sales_Channel,
+              data = AmazonSales,
+              family = gaussian(),
+              refresh = 0,
+              silent = 2,
+              seed = 9)
+```
+
+```{r}
+ndata <- tibble(Sales_Channel = c("Online", "Offline"))
+```
+
+```{r}
+fit_cs |>
+  add_epred_draws(newdata = ndata) |>
+  ggplot(aes(x = .epred, fill = Sales_Channel)) +
+  geom_density(alpha = 0.6) +
+  scale_fill_manual(values = c("Online" = "#1f77b4", "Offline" = "#ff7f0e")) +
+  labs(
+    title = "Predicted Sales Profit by Sales Channel",
+    subtitle = "Offline Sales Channel was successful at making more profit in the 2014's",
+    x = "Predicted Sales",
+    y = "Density",
+    fill = "Sales Channel"
+  ) +
+  theme_classic() +
+  theme(
+    plot.title = element_text(hjust = 0, size = 14, face = "bold"),
+    axis.title = element_text(size = 12),
+    legend.position = "top",
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10),
+    axis.ticks.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank()
+  ) 
+
+```
+
+```{r}
+pp_check(fit_cs)
+```
+
+$$
+f_{\text{Online}}(x) = \frac{1}{n_{\text{Online}}} \sum_{i=1}^{n_{\text{Online}}} K_h(x - X_{\text{Online}, i})
+$$

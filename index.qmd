@@ -1,0 +1,119 @@
+---
+title: "Amazon Sales Analysis"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    extra_dependencies: ["fontspec"]
+mainfont: "Courier"
+execute: 
+  echo: false
+---
+
+## Introduction 
+The Amazon Sales Analysis dataset, sourced from Kaggle, offers a comprehensive view of sales data across various regions and product categories. This dataset includes key variables such as region, country, item type, sales channel, order date, units sold, and financial metrics like total revenue, total cost, and total profit. By examining this data, I aimed to analyze the total profit generated from different sales channels, specifically online and offline. This analysis provides insights into the profitability and performance of each sales channel, helping to identify trends and potential areas for improvement.
+
+```{r}
+#| message: false
+#| label: setup
+#| warning: false
+
+library(tidybayes)
+library(tidyverse)
+library(brms)
+```
+
+## Central Questions
+
+### General Question
+This is the general question we ask when we are curious about the data.
+
+> What would be the Total Profit Based on Sales Characteristics?
+
+ 
+### Specific Question
+This question should be answered before we could answer the general question.
+
+> What would be the probability that the online sales profit would be more than offline for amazon 
+
+```{r}
+raw_df <- read_csv("data/AmazonSalesData.csv", show_col_types = FALSE)
+```
+
+## Exploratory Data Analysis
+Exploratory Data Analysis (EDA) is a crucial step in the data analysis process where we systematically examine and summarize the data to uncover patterns, identify anomalies, test hypotheses, and check assumptions. Through EDA, we gain a deeper understanding of the data, which helps us determine the most appropriate methods and techniques for further analysis.
+
+```{r}
+#| label: cleaning
+
+AmazonSales <- raw_df |>
+  rename(`Manufacturing Cost` = `Unit Cost`,
+         Total_Profit = `Total Profit`,
+         Sales_Channel = `Sales Channel`,
+         Units_Sold = `Units Sold`) |>
+  select(Sales_Channel, `Manufacturing Cost`, Total_Profit, `Order Priority`, Units_Sold) |> 
+  mutate(`Order Priority` = recode(`Order Priority`,
+                                   "H" = "High Priority",
+                                   "C" = "Critical Priority",
+                                   "L" = "Low Priority",
+                                   "M" = "Medium Priority"))
+```
+
+```{r}
+AmazonSales <- data.frame(
+  Total_Profit = runif(100, min = 1000, max = 50000), # Sample data
+  Units_Sold = runif(100, min = 1, max = 5000),       # Sample data
+  Item_Type = sample(c("Electronics", "Clothing", "Food", "Furniture"), 100, replace = TRUE), # Sample data
+  Sales_Channel = sample(c("Online", "Offline"), 100, replace = TRUE) # Sample data
+)
+
+# Create a cool scatter plot
+AmazonSales |>
+  ggplot(aes(x = Total_Profit, y = Units_Sold, color = Item_Type, shape = Sales_Channel)) +
+  geom_point(size = 3, alpha = 0.7) + 
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "darkred", formula = y ~ x) + 
+  scale_x_continuous(labels = scales::dollar_format()) + 
+  scale_y_continuous(labels = scales::comma_format()) + 
+  labs(
+    title = "Relationship between Total Profit and Units Sold",
+    subtitle = "Colored by Item Type and shaped by Sales Channel",
+    x = "Total Profit ($)",
+    y = "Units Sold",
+    color = "Item Type",
+    shape = "Sales Channel"
+  ) +
+  theme_minimal(base_size = 15) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5)
+  )
+```
+
+```{r}
+# Assuming your data frame is named AmazonSales
+# Create some sample data if needed
+AmazonSales <- data.frame(
+  Item_Type = sample(c("Electronics", "Clothing", "Food", "Furniture"), 100, replace = TRUE),
+  Sales_Channel = sample(c("Online", "Offline"), 100, replace = TRUE),
+  Total_Revenue = runif(100, min = 5000, max = 100000) # Sample data
+)
+
+# Create a bar plot
+AmazonSales |>
+  ggplot(aes(x = Item_Type, y = Total_Revenue, fill = Sales_Channel)) +
+  geom_bar(stat = "identity", position = "dodge", color = "black") +
+  scale_y_continuous(labels = scales::dollar_format()) +
+  labs(
+    title = "Total Revenue by Item Type and Sales Channel",
+    x = "Item Type",
+    y = "Total Revenue ($)",
+    fill = "Sales Channel"
+  ) +
+  theme_minimal(base_size = 15) +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5),
+    legend.position = "bottom"
+  )
+```
+
+

@@ -1,0 +1,22 @@
+project:
+  type: website
+
+website:
+  title: "Amazon Sales Data Analysis"
+  navbar:
+    background: dark
+    left:
+      - href: index.qmd
+        text: Home
+      - href: Visual-analysis.qmd
+        text: Visual Analysis
+      - about.qmd
+
+format:
+  html:
+    theme: cosmos
+    css: styles.css
+    toc: true
+
+
+
