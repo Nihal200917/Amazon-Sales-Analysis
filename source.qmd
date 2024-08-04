@@ -1,0 +1,23 @@
+---
+title: "Source"
+execute: 
+  echo: false
+---
+```{r}
+#| message: false
+library(tidyverse)
+library(tidycensus)
+library(scales)
+library(plotly)
+```
+
+## Dataset
+```{r}
+#| message: false
+x <- read_csv(file = "data/AmazonSalesData.csv")
+print(x)
+```
+### Link to my dataset
+
+The link to my dataset:
+[https://www.kaggle.com/datasets/mithilesh9/amazon-sales-data-analysis](https://www.kaggle.com/datasets/mithilesh9/amazon-sales-data-analysis)
