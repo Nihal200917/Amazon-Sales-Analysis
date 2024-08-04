@@ -17,12 +17,16 @@ library(gtsummary)
 ```
 
 ```{r}
+#| label: raw_data
+#| warning: false
+#| message: false
 raw_df <- read_csv("data/AmazonSalesData.csv", show_col_types = FALSE)
 ```
 raw
 ```{r}
 #| label: cleaning
-
+#| message: false
+#| warning: false
 AmazonSales <- raw_df |>
   rename(`Manufacturing Cost` = `Unit Cost`,
          Total_Profit = `Total Profit`,
@@ -40,51 +44,9 @@ AmazonSales
 
 ```{r}
 #| cache: true
-fit_cs <- brm(formula = Total_Profit ~ Sales_Channel,
-              data = AmazonSales,
-              family = gaussian(),
-              refresh = 0,
-              silent = 2,
-              seed = 10)
-```
-
-```{r}
-ndata <- tibble(Sales_Channel = c("Online", "Offline"))
-```
-
-```{r}
-plot3 <- fit_cs |>
-  add_epred_draws(newdata = ndata) |>
-  ggplot(aes(x = .epred, fill = Sales_Channel)) +
-  geom_density(alpha = 0.6) +
-  scale_fill_manual(values = c("Online" = "#1f77b4", "Offline" = "#ff7f0e")) +
-  labs(
-    title = "Predicted Sales Profit by Sales Channel",
-    subtitle = "Offline Sales Channel was successful at making more profit in the 2014's",
-    x = "Predicted Sales",
-    y = "Density",
-    fill = "Sales Channel"
-  ) +
-  theme_classic() +
-  theme(
-    plot.title = element_text(hjust = 0, size = 14, face = "bold"),
-    axis.title = element_text(size = 12),
-    legend.position = "top",
-    legend.title = element_text(size = 12),
-    legend.text = element_text(size = 10),
-    axis.ticks.y = element_blank(),
-    axis.text.y = element_blank(),
-    axis.title.y = element_blank()
-  ) 
-
-interactive_plot <- ggplotly(plot3, tooltip = c("x", "y"))
-
-# Display the interactive plot
-interactive_plot
-```
-
-```{r}
-#| cache: true
+#| message: false
+#| label: brm_model
+#| warning: false
 fit_x2 <- brm(formula = Total_Profit ~ Order_Year,
               data = AmazonSales,
               family = gaussian(),
@@ -94,10 +56,16 @@ fit_x2 <- brm(formula = Total_Profit ~ Order_Year,
 ```
 
 ```{r}
+#| label: variable
+#| message: false
+#| warning: false
 ndata = tibble("Order_Year" = c(2010:2026))
 ```
 
 ```{r}
+#| label: model
+#| message: false
+#| warning: false
 plot4 <- fit_x2 |>
   add_epred_draws(newdata = ndata) |>
   ggplot(aes(x = Order_Year, y = .epred)) +
@@ -121,6 +89,12 @@ interactive_plot <- ggplotly(plot4, tooltip = c("x", "y"))
 interactive_plot
 ```
 
+## Graph Explanation
+The plot visualizes the predictions from a Bayesian regression model where total profit is modeled as a function of order year using a Gaussian distribution. The blue points represent the model's predicted profits for each year from 2010 to 2026, while the red LOESS curve smooths these predictions to reveal the overall trend. The plot, with its clear axis labels, centered title, and styled caption, suggests how the model expects total profit to evolve over time, providing valuable insights into potential profit trends and helping guide future business decisions.
+\n
+\n
+The inclusion of a LOESS curve in the plot adds a nuanced layer of analysis by highlighting potential non-linear patterns that a simple linear regression might overlook. This is particularly important in financial forecasting, where trends can fluctuate due to various external factors. The Bayesian framework further strengthens the model by incorporating prior information and providing a probabilistic interpretation of the predictions, which can help in assessing uncertainty and making more informed decisions. Together, these elements make the plot a powerful tool for visualizing and understanding the complex dynamics of profit trends over time, offering both immediate insights and a foundation for deeper analysis.
+
 ```{r}
 loess_fit <- loess(.epred ~ Order_Year, data = ndata)
 
@@ -134,14 +108,13 @@ ndata$slope <- c(NA, diff(ndata$fitted) / diff(ndata$Order_Year))
 head(ndata$slope)
 ```
 
+```{r}
+fit_cs |>
+  tbl_regression()
+```
 
 $$
 \text{Sales_Channel}_i = \beta_0 + \beta_1\text{Total_Profit} + \epsilon_i
 $$
 
-
-```{r}
-fit_cs |>
-  tbl_regression()
-```
 
