@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "Visual-analysis.html",
+    "href": "Visual-analysis.html",
+    "title": "Visual Analysis",
+    "section": "",
+    "text": "raw\n# A tibble: 100 × 6\n   Sales_Channel `Manufacturing Cost` Total_Profit `Order Priority` `Order Date`\n   &lt;chr&gt;                        &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;       \n 1 Offline                     159.        951410. High Priority    5/28/2010   \n 2 Online                      117.        248406. Critical Priori… 8/22/2012   \n 3 Offline                     525.        224599. Low Priority     5/2/2014    \n 4 Online                        6.92       19526. Critical Priori… 6/20/2014   \n 5 Offline                     525.        639078. Low Priority     2/1/2013    \n 6 Online                      159.        285088. Critical Priori… 2/4/2015    \n 7 Offline                     503.        693912. Medium Priority  4/23/2011   \n 8 Online                       90.9       510217. High Priority    7/17/2012   \n 9 Offline                      56.7       152114. Medium Priority  7/14/2015   \n10 Online                      117.        584074. High Priority    4/18/2014   \n# ℹ 90 more rows\n# ℹ 1 more variable: Order_Year &lt;dbl&gt;"
+  },
+  {
+    "objectID": "Visual-analysis.html#graph-explanation",
+    "href": "Visual-analysis.html#graph-explanation",
+    "title": "Visual Analysis",
+    "section": "Graph Explanation",
+    "text": "Graph Explanation\nThe plot visualizes the predictions from a Bayesian regression model where total profit is modeled as a function of order year using a Gaussian distribution. The blue points represent the model’s predicted profits for each year from 2010 to 2026, while the red LOESS curve smooths these predictions to reveal the overall trend. The plot, with its clear axis labels, centered title, and styled caption, suggests how the model expects total profit to evolve over time, providing valuable insights into potential profit trends and helping guide future business decisions. The inclusion of a LOESS curve in the plot adds a nuanced layer of analysis by highlighting potential non-linear patterns that a simple linear regression might overlook. This is particularly important in financial forecasting, where trends can fluctuate due to various external factors. The Bayesian framework further strengthens the model by incorporating prior information and providing a probabilistic interpretation of the predictions, which can help in assessing uncertainty and making more informed decisions. Together, these elements make the plot a powerful tool for visualizing and understanding the complex dynamics of profit trends over time, offering both immediate insights and a foundation for deeper analysis."
+  },
+  {
+    "objectID": "Visual-analysis.html#quantitative-analysis",
+    "href": "Visual-analysis.html#quantitative-analysis",
+    "title": "Visual Analysis",
+    "section": "Quantitative Analysis",
+    "text": "Quantitative Analysis\n\n\nWarning in tidy.brmsfit(x, ..., effects = \"fixed\"): some parameter names\ncontain underscores: term naming may be unreliable!\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nOrder_Year\n971\n-40,693, 43,245\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\n\\[\nSalesChannel_i = \\beta_0 + \\beta_1TotalProfit + \\epsilon_i\n\\]"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Amazon Sales Analysis",
+    "section": "",
+    "text": "The Amazon Sales Analysis dataset, sourced from Kaggle, offers a comprehensive view of sales data across various regions and product categories. This dataset includes key variables such as region, country, item type, sales channel, order date, units sold, and financial metrics like total revenue, total cost, and total profit. By examining this data, I aimed to analyze the total profit generated from different sales channels, specifically online and offline. This analysis provides insights into the profitability and performance of each sales channel, helping to identify trends and potential areas for improvement."
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Amazon Sales Analysis",
+    "section": "",
+    "text": "The Amazon Sales Analysis dataset, sourced from Kaggle, offers a comprehensive view of sales data across various regions and product categories. This dataset includes key variables such as region, country, item type, sales channel, order date, units sold, and financial metrics like total revenue, total cost, and total profit. By examining this data, I aimed to analyze the total profit generated from different sales channels, specifically online and offline. This analysis provides insights into the profitability and performance of each sales channel, helping to identify trends and potential areas for improvement."
+  },
+  {
+    "objectID": "index.html#central-questions",
+    "href": "index.html#central-questions",
+    "title": "Amazon Sales Analysis",
+    "section": "Central Questions",
+    "text": "Central Questions\n\nGeneral Question\nThis is the general question we ask when we are curious about the data.\n\nWhat would be the status of the Total Profit throught the years?\n\n\n\nSpecific Question\nThis question should be answered before we could answer the general question.\n\nWhat would be the probability that the online sales profit would be more than offline for amazon"
+  },
+  {
+    "objectID": "index.html#exploratory-data-analysis",
+    "href": "index.html#exploratory-data-analysis",
+    "title": "Amazon Sales Analysis",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\nExploratory Data Analysis (EDA) is a crucial step in the data analysis process where we systematically examine and summarize the data to uncover patterns, identify anomalies, test hypotheses, and check assumptions. Through EDA, we gain a deeper understanding of the data, which helps us determine the most appropriate methods and techniques for further analysis."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hi my name is Nihal Neeraj. I am a rising 9th grader who enjoys Art and sports like Soccer. I am willing to learn and explore more on Data Science and ML(Machine Language).\nYou can reach me at my email: nihalneeraj2009@gmail.com\nYou could also check out my github repository when you click on my name or just click on this link: https://github.com/Nihal200917"
+  },
+  {
+    "objectID": "about.html#about-me",
+    "href": "about.html#about-me",
+    "title": "About",
+    "section": "",
+    "text": "Hi my name is Nihal Neeraj. I am a rising 9th grader who enjoys Art and sports like Soccer. I am willing to learn and explore more on Data Science and ML(Machine Language).\nYou can reach me at my email: nihalneeraj2009@gmail.com\nYou could also check out my github repository when you click on my name or just click on this link: https://github.com/Nihal200917"
+  },
+  {
+    "objectID": "about.html#about-this-project",
+    "href": "about.html#about-this-project",
+    "title": "About",
+    "section": "About this Project",
+    "text": "About this Project\nThis project was created as part of Kane’s Free Data Science Bootcamp, A free bootcamp that teaches the basics of Data Science as an 8-week course.\n\\[\n\\text{Sales_Channel}_i = \\beta_0 + \\beta_1\\text{Total_Profit} + \\epsilon_i\n\\]"
+  },
+  {
+    "objectID": "source.html",
+    "href": "source.html",
+    "title": "Source",
+    "section": "",
+    "text": "Warning: package 'tidycensus' was built under R version 4.4.1"
+  },
+  {
+    "objectID": "source.html#dataset",
+    "href": "source.html#dataset",
+    "title": "Source",
+    "section": "Dataset",
+    "text": "Dataset\n\n\n# A tibble: 100 × 14\n   Region      Country `Item Type` `Sales Channel` `Order Priority` `Order Date`\n   &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;       \n 1 Australia … Tuvalu  Baby Food   Offline         H                5/28/2010   \n 2 Central Am… Grenada Cereal      Online          C                8/22/2012   \n 3 Europe      Russia  Office Sup… Offline         L                5/2/2014    \n 4 Sub-Sahara… Sao To… Fruits      Online          C                6/20/2014   \n 5 Sub-Sahara… Rwanda  Office Sup… Offline         L                2/1/2013    \n 6 Australia … Solomo… Baby Food   Online          C                2/4/2015    \n 7 Sub-Sahara… Angola  Household   Offline         M                4/23/2011   \n 8 Sub-Sahara… Burkin… Vegetables  Online          H                7/17/2012   \n 9 Sub-Sahara… Republ… Personal C… Offline         M                7/14/2015   \n10 Sub-Sahara… Senegal Cereal      Online          H                4/18/2014   \n# ℹ 90 more rows\n# ℹ 8 more variables: `Order ID` &lt;dbl&gt;, `Ship Date` &lt;chr&gt;, `Units Sold` &lt;dbl&gt;,\n#   `Unit Price` &lt;dbl&gt;, `Unit Cost` &lt;dbl&gt;, `Total Revenue` &lt;dbl&gt;,\n#   `Total Cost` &lt;dbl&gt;, `Total Profit` &lt;dbl&gt;\n\n\n\nLink to my dataset\nThe link to my dataset: https://www.kaggle.com/datasets/mithilesh9/amazon-sales-data-analysis"
+  }
+]
