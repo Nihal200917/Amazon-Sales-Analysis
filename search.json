@@ -23,28 +23,28 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Amazon Sales Analysis",
+    "title": "Amazon Sales Profit Prediction",
     "section": "",
     "text": "The Amazon Sales Analysis dataset, sourced from Kaggle, offers a comprehensive view of sales data across various regions and product categories. This dataset includes key variables such as region, country, item type, sales channel, order date, units sold, and financial metrics like total revenue, total cost, and total profit. By examining this data, I aimed to analyze the total profit generated from different sales channels, specifically online and offline. This analysis provides insights into the profitability and performance of each sales channel, helping to identify trends and potential areas for improvement."
   },
   {
     "objectID": "index.html#introduction",
     "href": "index.html#introduction",
-    "title": "Amazon Sales Analysis",
+    "title": "Amazon Sales Profit Prediction",
     "section": "",
     "text": "The Amazon Sales Analysis dataset, sourced from Kaggle, offers a comprehensive view of sales data across various regions and product categories. This dataset includes key variables such as region, country, item type, sales channel, order date, units sold, and financial metrics like total revenue, total cost, and total profit. By examining this data, I aimed to analyze the total profit generated from different sales channels, specifically online and offline. This analysis provides insights into the profitability and performance of each sales channel, helping to identify trends and potential areas for improvement."
   },
   {
     "objectID": "index.html#central-questions",
     "href": "index.html#central-questions",
-    "title": "Amazon Sales Analysis",
+    "title": "Amazon Sales Profit Prediction",
     "section": "Central Questions",
     "text": "Central Questions\n\nGeneral Question\nThis is the general question we ask when we are curious about the data.\n\nWhat would be the status of the Total Profit throught the years?\n\n\n\nSpecific Question\nThis question should be answered before we could answer the general question.\n\nWhat would be the probability that the online sales profit would be more than offline for amazon"
   },
   {
     "objectID": "index.html#exploratory-data-analysis",
     "href": "index.html#exploratory-data-analysis",
-    "title": "Amazon Sales Analysis",
+    "title": "Amazon Sales Profit Prediction",
     "section": "Exploratory Data Analysis",
     "text": "Exploratory Data Analysis\nExploratory Data Analysis (EDA) is a crucial step in the data analysis process where we systematically examine and summarize the data to uncover patterns, identify anomalies, test hypotheses, and check assumptions. Through EDA, we gain a deeper understanding of the data, which helps us determine the most appropriate methods and techniques for further analysis."
   },
