@@ -20,6 +20,7 @@ The Amazon Sales Analysis dataset, sourced from Kaggle, offers a comprehensive v
 library(tidybayes)
 library(tidyverse)
 library(brms)
+library(plotly)
 ```
 
 ## Central Questions
@@ -27,7 +28,7 @@ library(brms)
 ### General Question
 This is the general question we ask when we are curious about the data.
 
-> What would be the Total Profit Based on Sales Characteristics?
+> What would be the status of the Total Profit throught the years?
 
  
 ### Specific Question
@@ -67,7 +68,7 @@ AmazonSales <- data.frame(
 )
 
 # Create a cool scatter plot
-AmazonSales |>
+plot1 <- AmazonSales |>
   ggplot(aes(x = Total_Profit, y = Units_Sold, color = Item_Type, shape = Sales_Channel)) +
   geom_point(size = 3, alpha = 0.7) + 
   geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "darkred", formula = y ~ x) + 
@@ -86,6 +87,11 @@ AmazonSales |>
     plot.title = element_text(hjust = 0.5, face = "bold"),
     plot.subtitle = element_text(hjust = 0.5)
   )
+
+interactive_plot <- ggplotly(plot1, tooltip = c("x", "y"))
+
+# Display the interactive plot
+interactive_plot
 ```
 
 ```{r}
@@ -98,7 +104,7 @@ AmazonSales <- data.frame(
 )
 
 # Create a bar plot
-AmazonSales |>
+plot2 <- AmazonSales |>
   ggplot(aes(x = Item_Type, y = Total_Revenue, fill = Sales_Channel)) +
   geom_bar(stat = "identity", position = "dodge", color = "black") +
   scale_y_continuous(labels = scales::dollar_format()) +
@@ -114,6 +120,11 @@ AmazonSales |>
     plot.subtitle = element_text(hjust = 0.5),
     legend.position = "bottom"
   )
+
+interactive_plot <- ggplotly(plot2, tooltip = c("x", "y"))
+
+# Display the interactive plot
+interactive_plot
 ```
 
 

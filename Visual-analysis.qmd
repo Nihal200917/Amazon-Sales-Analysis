@@ -12,14 +12,14 @@ execute:
 library(tidybayes)
 library(tidyverse)
 library(brms)
+library(plotly)
+library(gtsummary)
 ```
 
 ```{r}
 raw_df <- read_csv("data/AmazonSalesData.csv", show_col_types = FALSE)
 ```
-
-## Visual Representation
-
+raw
 ```{r}
 #| label: cleaning
 
@@ -27,13 +27,15 @@ AmazonSales <- raw_df |>
   rename(`Manufacturing Cost` = `Unit Cost`,
          Total_Profit = `Total Profit`,
          Sales_Channel = `Sales Channel`) |>
-  select(Sales_Channel, `Manufacturing Cost`, Total_Profit, `Order Priority`) |> 
+  select(Sales_Channel, `Manufacturing Cost`, Total_Profit, `Order Priority`, `Order Date`) |> 
   mutate(`Order Priority` = recode(`Order Priority`,
                                    "H" = "High Priority",
                                    "C" = "Critical Priority",
                                    "L" = "Low Priority",
-                                   "M" = "Medium Priority"))
+                                   "M" = "Medium Priority")) |>
+  mutate(Order_Year = year(mdy(`Order Date`)))
 
+AmazonSales
 ```
 
 ```{r}
@@ -43,7 +45,7 @@ fit_cs <- brm(formula = Total_Profit ~ Sales_Channel,
               family = gaussian(),
               refresh = 0,
               silent = 2,
-              seed = 9)
+              seed = 10)
 ```
 
 ```{r}
@@ -51,7 +53,7 @@ ndata <- tibble(Sales_Channel = c("Online", "Offline"))
 ```
 
 ```{r}
-fit_cs |>
+plot3 <- fit_cs |>
   add_epred_draws(newdata = ndata) |>
   ggplot(aes(x = .epred, fill = Sales_Channel)) +
   geom_density(alpha = 0.6) +
@@ -75,12 +77,71 @@ fit_cs |>
     axis.title.y = element_blank()
   ) 
 
+interactive_plot <- ggplotly(plot3, tooltip = c("x", "y"))
+
+# Display the interactive plot
+interactive_plot
 ```
 
 ```{r}
-pp_check(fit_cs)
+#| cache: true
+fit_x2 <- brm(formula = Total_Profit ~ Order_Year,
+              data = AmazonSales,
+              family = gaussian(),
+              silent = 2,
+              refresh = 0,
+              seed = 17)
 ```
 
+```{r}
+ndata = tibble("Order_Year" = c(2010:2026))
+```
+
+```{r}
+plot4 <- fit_x2 |>
+  add_epred_draws(newdata = ndata) |>
+  ggplot(aes(x = Order_Year, y = .epred)) +
+  geom_point(color = "blue", size = 3, alpha = 0.6) +  # Change point color and size
+  geom_smooth(method = "loess", color = "red", se = FALSE, size = 1) +  # Smooth line customization
+  labs(
+    title = "Predicted Total Profit by Order Year",
+    x = "Order Year",
+    y = "Predicted Total Profit",
+    caption = "Model: Bayesian Regression with Gaussian Family"
+  ) +
+  theme_minimal(base_size = 15) +  # Minimal theme with larger base font size
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),  # Center and bold title
+    plot.caption = element_text(size = 10, face = "italic"),  # Style caption
+    axis.text = element_text(color = "black")  # Ensure axis text is clear
+  )
+interactive_plot <- ggplotly(plot4, tooltip = c("x", "y"))
+
+# Display the interactive plot
+interactive_plot
+```
+
+```{r}
+loess_fit <- loess(.epred ~ Order_Year, data = ndata)
+
+# Predict fitted values using the LOESS model
+ndata$fitted <- predict(loess_fit, newdata = ndata$Order_Year)
+
+# Calculate the slope (first derivative) of the LOESS fit
+ndata$slope <- c(NA, diff(ndata$fitted) / diff(ndata$Order_Year))
+
+# Display the slopes
+head(ndata$slope)
+```
+
+
 $$
-f_{\text{Online}}(x) = \frac{1}{n_{\text{Online}}} \sum_{i=1}^{n_{\text{Online}}} K_h(x - X_{\text{Online}, i})
+\text{Sales_Channel}_i = \beta_0 + \beta_1\text{Total_Profit} + \epsilon_i
 $$
+
+
+```{r}
+fit_cs |>
+  tbl_regression()
+```
+
