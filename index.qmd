@@ -1,5 +1,5 @@
 ---
-title: "Amazon Sales Analysis"
+title: "Amazon Sales Profit Prediction"
 output: 
   pdf_document:
     latex_engine: xelatex
@@ -34,7 +34,7 @@ This is the general question we ask when we are curious about the data.
 ### Specific Question
 This question should be answered before we could answer the general question.
 
-> What would be the probability that the online sales profit would be more than offline for amazon 
+> What would be the probability that the sales profit could only go up 2010 to 2020 
 
 ```{r}
 raw_df <- read_csv("data/AmazonSalesData.csv", show_col_types = FALSE)

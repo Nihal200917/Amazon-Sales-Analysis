@@ -3,7 +3,7 @@ title: "Visual Analysis"
 execute: 
   echo: false
 ---
-
+## Fitted Model
 ```{r}
 #| message: false
 #| label: setup
@@ -22,7 +22,7 @@ library(gtsummary)
 #| message: false
 raw_df <- read_csv("data/AmazonSalesData.csv", show_col_types = FALSE)
 ```
-raw
+
 ```{r}
 #| label: cleaning
 #| message: false
@@ -38,8 +38,6 @@ AmazonSales <- raw_df |>
                                    "L" = "Low Priority",
                                    "M" = "Medium Priority")) |>
   mutate(Order_Year = year(mdy(`Order Date`)))
-
-AmazonSales
 ```
 
 ```{r}
@@ -95,26 +93,20 @@ The plot visualizes the predictions from a Bayesian regression model where total
 \n
 The inclusion of a LOESS curve in the plot adds a nuanced layer of analysis by highlighting potential non-linear patterns that a simple linear regression might overlook. This is particularly important in financial forecasting, where trends can fluctuate due to various external factors. The Bayesian framework further strengthens the model by incorporating prior information and providing a probabilistic interpretation of the predictions, which can help in assessing uncertainty and making more informed decisions. Together, these elements make the plot a powerful tool for visualizing and understanding the complex dynamics of profit trends over time, offering both immediate insights and a foundation for deeper analysis.
 
-```{r}
-loess_fit <- loess(.epred ~ Order_Year, data = ndata)
 
-# Predict fitted values using the LOESS model
-ndata$fitted <- predict(loess_fit, newdata = ndata$Order_Year)
-
-# Calculate the slope (first derivative) of the LOESS fit
-ndata$slope <- c(NA, diff(ndata$fitted) / diff(ndata$Order_Year))
-
-# Display the slopes
-head(ndata$slope)
-```
+## Quantitative Analysis
 
 ```{r}
-fit_cs |>
+#| warning: false
+# creates the regression table summarizing 
+fit_x2 |>
   tbl_regression()
 ```
 
+### Formula
 $$
-\text{Sales_Channel}_i = \beta_0 + \beta_1\text{Total_Profit} + \epsilon_i
+SalesChannel_i = \beta_0 + \beta_1TotalProfit + \epsilon_i
 $$
 
-
+## Explanation of regression table
+The output from your Bayesian regression model indicates that the predictor Order_Year has an estimated effect of increasing the outcome variable, likely total profit, by 971 units for each additional year. However, the 95% Credible Interval for this effect is wide, ranging from -40,693 to 43,245, suggesting significant uncertainty. This implies that the true effect of Order_Year could be either negative, positive, or close to zero, indicating that Order_Year might not be a strong or reliable predictor in your model.
