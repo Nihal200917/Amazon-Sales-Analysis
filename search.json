@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "Visual-analysis.html",
-    "href": "Visual-analysis.html",
-    "title": "Visual Analysis",
-    "section": "",
-    "text": "raw\n# A tibble: 100 × 6\n   Sales_Channel `Manufacturing Cost` Total_Profit `Order Priority` `Order Date`\n   &lt;chr&gt;                        &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;       \n 1 Offline                     159.        951410. High Priority    5/28/2010   \n 2 Online                      117.        248406. Critical Priori… 8/22/2012   \n 3 Offline                     525.        224599. Low Priority     5/2/2014    \n 4 Online                        6.92       19526. Critical Priori… 6/20/2014   \n 5 Offline                     525.        639078. Low Priority     2/1/2013    \n 6 Online                      159.        285088. Critical Priori… 2/4/2015    \n 7 Offline                     503.        693912. Medium Priority  4/23/2011   \n 8 Online                       90.9       510217. High Priority    7/17/2012   \n 9 Offline                      56.7       152114. Medium Priority  7/14/2015   \n10 Online                      117.        584074. High Priority    4/18/2014   \n# ℹ 90 more rows\n# ℹ 1 more variable: Order_Year &lt;dbl&gt;"
-  },
-  {
     "objectID": "Visual-analysis.html#graph-explanation",
     "href": "Visual-analysis.html#graph-explanation",
     "title": "Visual Analysis",
@@ -18,7 +11,14 @@
     "href": "Visual-analysis.html#quantitative-analysis",
     "title": "Visual Analysis",
     "section": "Quantitative Analysis",
-    "text": "Quantitative Analysis\n\n\nWarning in tidy.brmsfit(x, ..., effects = \"fixed\"): some parameter names\ncontain underscores: term naming may be unreliable!\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nOrder_Year\n971\n-40,693, 43,245\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\n\\[\nSalesChannel_i = \\beta_0 + \\beta_1TotalProfit + \\epsilon_i\n\\]"
+    "text": "Quantitative Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nOrder_Year\n971\n-40,693, 43,245\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\n\nFormula\n\\[\nSalesChannel_i = \\beta_0 + \\beta_1TotalProfit + \\epsilon_i\n\\]"
+  },
+  {
+    "objectID": "Visual-analysis.html#explanation-of-regression-table",
+    "href": "Visual-analysis.html#explanation-of-regression-table",
+    "title": "Visual Analysis",
+    "section": "Explanation of regression table",
+    "text": "Explanation of regression table\nThe output from your Bayesian regression model indicates that the predictor Order_Year has an estimated effect of increasing the outcome variable, likely total profit, by 971 units for each additional year. However, the 95% Credible Interval for this effect is wide, ranging from -40,693 to 43,245, suggesting significant uncertainty. This implies that the true effect of Order_Year could be either negative, positive, or close to zero, indicating that Order_Year might not be a strong or reliable predictor in your model."
   },
   {
     "objectID": "index.html",
@@ -39,7 +39,7 @@
     "href": "index.html#central-questions",
     "title": "Amazon Sales Profit Prediction",
     "section": "Central Questions",
-    "text": "Central Questions\n\nGeneral Question\nThis is the general question we ask when we are curious about the data.\n\nWhat would be the status of the Total Profit throught the years?\n\n\n\nSpecific Question\nThis question should be answered before we could answer the general question.\n\nWhat would be the probability that the online sales profit would be more than offline for amazon"
+    "text": "Central Questions\n\nGeneral Question\nThis is the general question we ask when we are curious about the data.\n\nWhat would be the status of the Total Profit throught the years?\n\n\n\nSpecific Question\nThis question should be answered before we could answer the general question.\n\nWhat would be the probability that the sales profit could only go up 2010 to 2020"
   },
   {
     "objectID": "index.html#exploratory-data-analysis",
@@ -53,14 +53,14 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Hi my name is Nihal Neeraj. I am a rising 9th grader who enjoys Art and sports like Soccer. I am willing to learn and explore more on Data Science and ML(Machine Language).\nYou can reach me at my email: nihalneeraj2009@gmail.com\nYou could also check out my github repository when you click on my name or just click on this link: https://github.com/Nihal200917"
+    "text": "Hi my name is Nihal Neeraj. I am a rising 9th grader who enjoys Art and sports like Soccer. I am willing to learn and explore more on Data Science and ML(Machine Learning).\nYou can reach me at my email: nihalneeraj2009@gmail.com\nYou could also check out my github repository when you click on my name or just click on this link: https://github.com/Nihal200917"
   },
   {
     "objectID": "about.html#about-me",
     "href": "about.html#about-me",
     "title": "About",
     "section": "",
-    "text": "Hi my name is Nihal Neeraj. I am a rising 9th grader who enjoys Art and sports like Soccer. I am willing to learn and explore more on Data Science and ML(Machine Language).\nYou can reach me at my email: nihalneeraj2009@gmail.com\nYou could also check out my github repository when you click on my name or just click on this link: https://github.com/Nihal200917"
+    "text": "Hi my name is Nihal Neeraj. I am a rising 9th grader who enjoys Art and sports like Soccer. I am willing to learn and explore more on Data Science and ML(Machine Learning).\nYou can reach me at my email: nihalneeraj2009@gmail.com\nYou could also check out my github repository when you click on my name or just click on this link: https://github.com/Nihal200917"
   },
   {
     "objectID": "about.html#about-this-project",

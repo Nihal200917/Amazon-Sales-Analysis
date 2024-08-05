@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Amazon Sales Data Analysis - About</title>
+<title>Amazon Sales Data Analysis - Quantitative Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,7 +130,7 @@ window.Quarto = {
 <span class="menu-text">Source</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -145,21 +145,14 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#about-me" id="toc-about-me" class="nav-link active" data-scroll-target="#about-me">About Me</a></li>
-  <li><a href="#about-this-project" id="toc-about-this-project" class="nav-link" data-scroll-target="#about-this-project">About this Project</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Quantitative Analysis</h1>
 </div>
 
 
@@ -176,21 +169,11 @@ window.Quarto = {
 </header>
 
 
-<section id="about-me" class="level2">
-<h2 class="anchored" data-anchor-id="about-me">About Me</h2>
-<p>Hi my name is <a href="https://github.com/Nihal200917">Nihal Neeraj</a>. I am a rising 9th grader who enjoys Art and sports like Soccer. I am willing to learn and explore more on Data Science and ML(Machine Learning).</p>
-<p>You can reach me at my email: <a href="nihalneeraj2009@gmail.com">nihalneeraj2009@gmail.com</a></p>
-<p>You could also check out my github repository when you click on my name or just click on this link: <a href="https://github.com/Nihal200917">https://github.com/Nihal200917</a></p>
-</section>
-<section id="about-this-project" class="level2">
-<h2 class="anchored" data-anchor-id="about-this-project">About this Project</h2>
-<p>This project was created as part of <a href="https://bootcamp.davidkane.info/schedule.html">Kane’s Free Data Science Bootcamp</a>, A free bootcamp that teaches the basics of Data Science as an 8-week course.</p>
 <p><span class="math display">\[
-\text{Sales_Channel}_i = \beta_0 + \beta_1\text{Total_Profit} + \epsilon_i
+SalesChannel_i = \beta_0 + \beta_1TotalProfit + \epsilon_i
 \]</span></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -274,7 +257,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/Nihal200917\.github\.io\/Amazon-Sales-Final_Project\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
