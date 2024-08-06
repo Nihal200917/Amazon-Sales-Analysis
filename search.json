@@ -32,14 +32,14 @@
     "href": "index.html",
     "title": "Amazon Sales Profit Prediction",
     "section": "",
-    "text": "Sales profits from preferred sales channels have grown significantly. I gathered data from the Amazon Sales Kaggle dataset, covering 100 sales from 2010 to 2019. Using this information, we predicted future sales profits based on two main sales channels: Online and Offline. We modeled Total Profit, a numerical variable, as a linear function of Order Year. As the years progress, profits appear to increase. Specifically, sales profits in the Online Sales Channel are predicted to rise by $971 each year. However, this projection is subject to external factors that could influence Amazon’s profit margins."
+    "text": "Sales profits from preferred sales channels have grown significantly. I gathered data from the Amazon Sales Kaggle dataset, covering 100 sales from 2010 to 2019. Using this information, we predicted future sales profits based on two main sales channels: Online and Offline. We modeled Total Profit, a numerical variable, as a linear function of Order Year. As the years progress, profits appear to increase. Specifically, sales profits in the Online Sales Channel are predicted to rise by $764 each year. However, this projection is subject to external factors that could influence Amazon’s profit margins."
   },
   {
     "objectID": "index.html#introduction",
     "href": "index.html#introduction",
     "title": "Amazon Sales Profit Prediction",
     "section": "",
-    "text": "Sales profits from preferred sales channels have grown significantly. I gathered data from the Amazon Sales Kaggle dataset, covering 100 sales from 2010 to 2019. Using this information, we predicted future sales profits based on two main sales channels: Online and Offline. We modeled Total Profit, a numerical variable, as a linear function of Order Year. As the years progress, profits appear to increase. Specifically, sales profits in the Online Sales Channel are predicted to rise by $971 each year. However, this projection is subject to external factors that could influence Amazon’s profit margins."
+    "text": "Sales profits from preferred sales channels have grown significantly. I gathered data from the Amazon Sales Kaggle dataset, covering 100 sales from 2010 to 2019. Using this information, we predicted future sales profits based on two main sales channels: Online and Offline. We modeled Total Profit, a numerical variable, as a linear function of Order Year. As the years progress, profits appear to increase. Specifically, sales profits in the Online Sales Channel are predicted to rise by $764 each year. However, this projection is subject to external factors that could influence Amazon’s profit margins."
   },
   {
     "objectID": "index.html#plot-for-online",
@@ -53,7 +53,7 @@
     "href": "index.html#plot-for-offline",
     "title": "Amazon Sales Profit Prediction",
     "section": "Plot for Offline",
-    "text": "Plot for Offline\n\n\nWarning: Removed 8 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 8 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+    "text": "Plot for Offline"
   },
   {
     "objectID": "about.html",
