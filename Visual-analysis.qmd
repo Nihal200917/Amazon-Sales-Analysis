@@ -4,6 +4,7 @@ execute:
   echo: false
 ---
 ## Fitted Model
+
 ```{r}
 #| message: false
 #| label: setup
@@ -45,7 +46,8 @@ AmazonSales <- raw_df |>
 #| message: false
 #| label: brm_model
 #| warning: false
-fit_x2 <- brm(formula = Total_Profit ~ Order_Year,
+
+fit_x2 <- brm(formula = Total_Profit ~ Order_Year + Sales_Channel,
               data = AmazonSales,
               family = gaussian(),
               silent = 2,
@@ -57,23 +59,27 @@ fit_x2 <- brm(formula = Total_Profit ~ Order_Year,
 #| label: variable
 #| message: false
 #| warning: false
-ndata = tibble("Order_Year" = c(2010:2026))
+
+ndata = tibble("Order_Year" = c(2010:2027),
+               "Sales_Channel" = rep(c("Online", "Offline"), times = 9))
 ```
 
 ```{r}
-#| label: model
+#| label: model3
 #| message: false
 #| warning: false
+
 plot4 <- fit_x2 |>
   add_epred_draws(newdata = ndata) |>
+  filter(Sales_Channel == "Online") |>
   ggplot(aes(x = Order_Year, y = .epred)) +
-  geom_point(color = "blue", size = 3, alpha = 0.6) +  # Change point color and size
-  geom_smooth(method = "loess", color = "red", se = FALSE, size = 1) +  # Smooth line customization
+  geom_point(color = "#ECB159", size = 3, alpha = 0.6) +  # Change point color and size
+  geom_smooth(method = "loess", color = "#B67352", se = FALSE, size = 1) +  # Smooth line customization
   labs(
-    title = "Predicted Total Profit by Order Year",
+    title = "Predicted Total Profit for Online Sales Channel",
     x = "Order Year",
     y = "Predicted Total Profit",
-    caption = "Model: Bayesian Regression with Gaussian Family"
+    caption = "Source: Kaggle, Amazon Sales Dataset"
   ) +
   theme_minimal(base_size = 15) +  # Minimal theme with larger base font size
   theme(
@@ -81,10 +87,61 @@ plot4 <- fit_x2 |>
     plot.caption = element_text(size = 10, face = "italic"),  # Style caption
     axis.text = element_text(color = "black")  # Ensure axis text is clear
   )
-interactive_plot <- ggplotly(plot4, tooltip = c("x", "y"))
+plot4
+```
 
-# Display the interactive plot
-interactive_plot
+```{r}
+#| label: model4
+#| message: false
+#| warning: false
+
+plot5 <- fit_x2 |>
+  add_epred_draws(newdata = ndata) |>
+  filter(Sales_Channel == "Offline") |>
+  ggplot(aes(x = Order_Year, y = .epred)) +
+  geom_point(color = "#A2678A", size = 3, alpha = 0.6) +  # Change point color and size
+  geom_smooth(method = "loess", color = "#3F1D38", se = FALSE, size = 1) +  # Smooth line customization
+  labs(
+    title = "Predicted Total Profit for Offline Sales Channel",
+    x = "Order Year",
+    y = "Predicted Total Profit",
+    caption = "Source: Kaggle, Amazon Sales Dataset"
+  ) +
+  theme_minimal(base_size = 15) +  # Minimal theme with larger base font size
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),  # Center and bold title
+    plot.caption = element_text(size = 10, face = "italic"),  # Style caption
+    axis.text = element_text(color = "black")  # Ensure axis text is clear
+  )
+plot5
+```
+
+## Central Question
+This plot answers our general/central question which answers how the profit increasing trend would be during upcoming years.
+
+```{r}
+#| label: model5
+#| message: false
+#| warning: false
+
+plot6 <- fit_x2 |>
+  add_epred_draws(newdata = ndata) |>
+  ggplot(aes(x = Order_Year, y = .epred)) +
+  geom_point(color = "#03346E", size = 3, alpha = 0.6) +  # Change point color and size
+  geom_smooth(method = "loess", color = "#6EACDA", se = FALSE, size = 1) +  # Smooth line customization
+  labs(
+    title = "Predicted Total Profit by Order Year",
+    x = "Order Year",
+    y = "Predicted Total Profit",
+    caption = "Source: Kaggle, Amazon Sales Dataset"
+  ) +
+  theme_minimal(base_size = 15) +  # Minimal theme with larger base font size
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),  # Center and bold title
+    plot.caption = element_text(size = 10, face = "italic"),  # Style caption
+    axis.text = element_text(color = "black")  # Ensure axis text is clear
+  )
+plot6
 ```
 
 ## Graph Explanation
@@ -105,8 +162,16 @@ fit_x2 |>
 
 ### Formula
 $$
-SalesChannel_i = \beta_0 + \beta_1TotalProfit + \epsilon_i
+TotalProfit_i = \beta_0 + \beta_1SalesChannel + \beta_2OrderYear + \epsilon_i
 $$
 
 ## Explanation of regression table
-The output from your Bayesian regression model indicates that the predictor Order_Year has an estimated effect of increasing the outcome variable, likely total profit, by 971 units for each additional year. However, the 95% Credible Interval for this effect is wide, ranging from -40,693 to 43,245, suggesting significant uncertainty. This implies that the true effect of Order_Year could be either negative, positive, or close to zero, indicating that Order_Year might not be a strong or reliable predictor in your model.
+The regression results provide an insight into the relationship between the predictor variables—Order Year and Sales Channel—and the predicted Total Profit. The estimated coefficient (Beta) for Order Year is 764, with a 95% Credible Interval (CI) ranging from -39,321 to 42,843. This wide interval, which includes zero, suggests that the effect of Order Year on Total Profit is uncertain, indicating no clear evidence of a positive or negative trend over time.
+
+For the Sales Channel variable, the category Online has an estimated coefficient of -114,969 with a 95% CI of -294,935 to 58,348. This suggests that, on average, online sales may be associated with a decrease in Total Profit compared to the baseline (likely offline or another sales channel), but the large interval again includes zero, indicating considerable uncertainty. 
+## Posterior Perdictive Check
+
+```{r}
+fit_x2 |>
+  pp_check()
+```

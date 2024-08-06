@@ -13,8 +13,3 @@ You could also check out my github repository when you click on my name or just 
 ## About this Project
 
 This project was created as part of [Kane's Free Data Science Bootcamp](https://bootcamp.davidkane.info/schedule.html), A free bootcamp that teaches the basics of Data Science as an 8-week course.
-
-
-$$
-\text{Sales_Channel}_i = \beta_0 + \beta_1\text{Total_Profit} + \epsilon_i
-$$

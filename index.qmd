@@ -1,16 +1,12 @@
 ---
 title: "Amazon Sales Profit Prediction"
-output: 
-  pdf_document:
-    latex_engine: xelatex
-    extra_dependencies: ["fontspec"]
-mainfont: "Courier"
 execute: 
   echo: false
 ---
 
 ## Introduction 
-The Amazon Sales Analysis dataset, sourced from Kaggle, offers a comprehensive view of sales data across various regions and product categories. This dataset includes key variables such as region, country, item type, sales channel, order date, units sold, and financial metrics like total revenue, total cost, and total profit. By examining this data, I aimed to analyze the total profit generated from different sales channels, specifically online and offline. This analysis provides insights into the profitability and performance of each sales channel, helping to identify trends and potential areas for improvement.
+
+Sales profits from preferred sales channels have grown significantly. I gathered data from the Amazon Sales Kaggle dataset, covering 100 sales from 2010 to 2019. Using this information, we predicted future sales profits based on two main sales channels: Online and Offline. We modeled Total Profit, a numerical variable, as a linear function of Order Year. As the years progress, profits appear to increase. Specifically, sales profits in the Online Sales Channel are predicted to rise by $764 each year. However, this projection is subject to external factors that could influence Amazon's profit margins.
 
 ```{r}
 #| message: false
@@ -23,60 +19,62 @@ library(brms)
 library(plotly)
 ```
 
-## Central Questions
-
-### General Question
-This is the general question we ask when we are curious about the data.
-
-> What would be the status of the Total Profit throught the years?
-
- 
-### Specific Question
-This question should be answered before we could answer the general question.
-
-> What would be the probability that the sales profit could only go up 2010 to 2020 
-
 ```{r}
 raw_df <- read_csv("data/AmazonSalesData.csv", show_col_types = FALSE)
 ```
 
-## Exploratory Data Analysis
-Exploratory Data Analysis (EDA) is a crucial step in the data analysis process where we systematically examine and summarize the data to uncover patterns, identify anomalies, test hypotheses, and check assumptions. Through EDA, we gain a deeper understanding of the data, which helps us determine the most appropriate methods and techniques for further analysis.
-
 ```{r}
 #| label: cleaning
-
+#| message: false
+#| warning: false
 AmazonSales <- raw_df |>
   rename(`Manufacturing Cost` = `Unit Cost`,
          Total_Profit = `Total Profit`,
-         Sales_Channel = `Sales Channel`,
-         Units_Sold = `Units Sold`) |>
-  select(Sales_Channel, `Manufacturing Cost`, Total_Profit, `Order Priority`, Units_Sold) |> 
+         Sales_Channel = `Sales Channel`) |>
+  select(Sales_Channel, `Manufacturing Cost`, Total_Profit, `Order Priority`, `Order Date`, `Units Sold`) |> 
   mutate(`Order Priority` = recode(`Order Priority`,
                                    "H" = "High Priority",
                                    "C" = "Critical Priority",
                                    "L" = "Low Priority",
-                                   "M" = "Medium Priority"))
+                                   "M" = "Medium Priority")) |>
+  mutate(Order_Year = year(mdy(`Order Date`)))
 ```
 
 ```{r}
-AmazonSales <- data.frame(
-  Total_Profit = runif(100, min = 1000, max = 50000), # Sample data
-  Units_Sold = runif(100, min = 1, max = 5000),       # Sample data
-  Item_Type = sample(c("Electronics", "Clothing", "Food", "Furniture"), 100, replace = TRUE), # Sample data
-  Sales_Channel = sample(c("Online", "Offline"), 100, replace = TRUE) # Sample data
-)
+#| cache: true
+#| message: false
+#| label: brm_model
+#| warning: false
+fit_x2 <- brm(formula = Total_Profit ~ Order_Year + Sales_Channel,
+              data = AmazonSales,
+              family = gaussian(),
+              silent = 2,
+              refresh = 0,
+              seed = 17)
+```
+
+```{r}
+#| label: variable
+#| message: false
+#| warning: false
+ndata = tibble("Order_Year" = c(2010:2017),
+               "Sales_Channel" = rep(c("Online", "Offline"), times = 4))
+```
+
+```{r}
+#| label: model
+#| message: false
+#| warning: FALSE
 
 # Create a cool scatter plot
 plot1 <- AmazonSales |>
-  ggplot(aes(x = Total_Profit, y = Units_Sold, color = Item_Type, shape = Sales_Channel)) +
-  geom_point(size = 3, alpha = 0.7) + 
-  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", color = "darkred", formula = y ~ x) + 
+  ggplot(aes(x = Total_Profit, y = `Units Sold`, color = Sales_Channel)) +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", formula = y ~ x) + 
   scale_x_continuous(labels = scales::dollar_format()) + 
   scale_y_continuous(labels = scales::comma_format()) + 
   labs(
-    title = "Relationship between Total Profit and Units Sold",
-    subtitle = "Colored by Item Type and shaped by Sales Channel",
+    title = "Total Profit by the number of Units Sold",
+    subtitle = "Online Sales earn the most profit",
     x = "Total Profit ($)",
     y = "Units Sold",
     color = "Item Type",
@@ -87,44 +85,71 @@ plot1 <- AmazonSales |>
     plot.title = element_text(hjust = 0.5, face = "bold"),
     plot.subtitle = element_text(hjust = 0.5)
   )
-
-interactive_plot <- ggplotly(plot1, tooltip = c("x", "y"))
-
-# Display the interactive plot
-interactive_plot
+plot1
 ```
 
-```{r}
-# Assuming your data frame is named AmazonSales
-# Create some sample data if needed
-AmazonSales <- data.frame(
-  Item_Type = sample(c("Electronics", "Clothing", "Food", "Furniture"), 100, replace = TRUE),
-  Sales_Channel = sample(c("Online", "Offline"), 100, replace = TRUE),
-  Total_Revenue = runif(100, min = 5000, max = 100000) # Sample data
-)
+# Models to see which Sales Channel has more profit than the other
 
-# Create a bar plot
-plot2 <- AmazonSales |>
-  ggplot(aes(x = Item_Type, y = Total_Revenue, fill = Sales_Channel)) +
-  geom_bar(stat = "identity", position = "dodge", color = "black") +
-  scale_y_continuous(labels = scales::dollar_format()) +
+Let's start by answering our specific question,
+The below plot shows what the total profit would be between the years of 2010 and 2017.
+
+## Plot for Online
+```{r}
+# Plot for Online
+#| label: model1
+#| message: false
+#| warning: FALSE
+
+plot2 <- fit_x2 |>
+  add_epred_draws(newdata = ndata) |>
+  filter(Sales_Channel == "Online") |>
+  ggplot(aes(x = Order_Year, y = .epred)) +
+  geom_point(color = "#FFC470", size = 3, alpha = 0.6) +  # Change point color and size
+  geom_smooth(method = "gam", color = "#8B322C", se = FALSE, linewidth = 1, formula = y ~ x) +  # Smooth line customization
   labs(
-    title = "Total Revenue by Item Type and Sales Channel",
-    x = "Item Type",
-    y = "Total Revenue ($)",
-    fill = "Sales Channel"
+    title = "Predicted Total Profit for Online Sales Channel",
+    x = "Order Year",
+    y = "Predicted Total Profit",
+    caption = "Source: Kaggle, Amazon Sales Dataset"
   ) +
-  theme_minimal(base_size = 15) +
+  scale_y_continuous(limits = c(-500000, 1000000), breaks = c(-500000, 0, 500000, 1000000)) +
+  theme_classic(base_size = 15) +  # Minimal theme with larger base font size
   theme(
-    plot.title = element_text(hjust = 0.5, face = "bold"),
-    plot.subtitle = element_text(hjust = 0.5),
-    legend.position = "bottom"
+    plot.title = element_text(hjust = 0.5, face = "bold"),  # Center and bold title
+    plot.caption = element_text(size = 10, face = "italic"),  # Style caption
+    axis.text = element_text(color = "black")  # Ensure axis text is clear
   )
 
-interactive_plot <- ggplotly(plot2, tooltip = c("x", "y"))
-
-# Display the interactive plot
-interactive_plot
+plot2
 ```
 
+## Plot for Offline
 
+```{r}
+# Plot for Offline
+#| label: model2
+#| message: false
+#| warning: FALSE
+
+plot3 <- fit_x2 |>
+  add_epred_draws(newdata = ndata) |>
+  filter(Sales_Channel == "Offline") |>
+  filter(!is.na(.epred) & .epred >= 0 & .epred <= 800000) |>
+  ggplot(aes(x = Order_Year, y = .epred)) +
+  geom_point(color = "#729762", size = 3, alpha = 0.6) +  # Change point color and size
+  geom_smooth(method = "gam", color = "#254336", se = FALSE, linewidth = 1, formula = y ~ x) +  # Smooth line customization
+  labs(
+    title = "Predicted Total Profit for Offline Sales Channel",
+    x = "Order Year",
+    y = "Predicted Total Profit",
+    caption = "Source: Kaggle, Amazon Sales Dataset"
+  ) +
+  scale_y_continuous(limits = c(0, 800000)) +
+  theme_classic(base_size = 15) +  # Classical theme 
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),  # Center and bold title
+    plot.caption = element_text(size = 10, face = "italic"),  # Style caption
+    axis.text = element_text(color = "black")  # Ensure axis text is clear
+  )
+plot3
+```
