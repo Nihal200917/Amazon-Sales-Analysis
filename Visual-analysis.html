@@ -156,6 +156,7 @@ window.Quarto = {
   <li><a href="#formula" id="toc-formula" class="nav-link" data-scroll-target="#formula">Formula</a></li>
   </ul></li>
   <li><a href="#explanation-of-regression-table" id="toc-explanation-of-regression-table" class="nav-link" data-scroll-target="#explanation-of-regression-table">Explanation of regression table</a></li>
+  <li><a href="#posterior-perdictive-check" id="toc-posterior-perdictive-check" class="nav-link" data-scroll-target="#posterior-perdictive-check">Posterior Perdictive Check</a></li>
   </ul>
 </nav>
     </div>
@@ -707,6 +708,21 @@ SalesChannel_i = \beta_0 + \beta_1TotalProfit + \epsilon_i
 <section id="explanation-of-regression-table" class="level2">
 <h2 class="anchored" data-anchor-id="explanation-of-regression-table">Explanation of regression table</h2>
 <p>The output from your Bayesian regression model indicates that the predictor Order_Year has an estimated effect of increasing the outcome variable, likely total profit, by 971 units for each additional year. However, the 95% Credible Interval for this effect is wide, ranging from -40,693 to 43,245, suggesting significant uncertainty. This implies that the true effect of Order_Year could be either negative, positive, or close to zero.</p>
+</section>
+<section id="posterior-perdictive-check" class="level2">
+<h2 class="anchored" data-anchor-id="posterior-perdictive-check">Posterior Perdictive Check</h2>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Using 10 posterior draws for ppc type 'dens_overlay' by default.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Visual-analysis_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
