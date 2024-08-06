@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "Visual-analysis.html",
-    "href": "Visual-analysis.html",
+    "objectID": "Visual-analysis.html#central-question",
+    "href": "Visual-analysis.html#central-question",
     "title": "Visual Analysis",
-    "section": "",
-    "text": "Let’s start by answering our specific question, The below plot shows what the total profit would be between the years of 2010 and 2017\n\n\n\n\n\n\n\n\n\nThis plot answers our general question which answers how the profit increasing trend would be during upcoming years"
-  },
-  {
-    "objectID": "Visual-analysis.html#fitted-model",
-    "href": "Visual-analysis.html#fitted-model",
-    "title": "Visual Analysis",
-    "section": "",
-    "text": "Let’s start by answering our specific question, The below plot shows what the total profit would be between the years of 2010 and 2017\n\n\n\n\n\n\n\n\n\nThis plot answers our general question which answers how the profit increasing trend would be during upcoming years"
+    "section": "Central Question",
+    "text": "Central Question\nThis plot answers our general/central question which answers how the profit increasing trend would be during upcoming years."
   },
   {
     "objectID": "Visual-analysis.html#graph-explanation",
@@ -25,7 +18,7 @@
     "href": "Visual-analysis.html#quantitative-analysis",
     "title": "Visual Analysis",
     "section": "Quantitative Analysis",
-    "text": "Quantitative Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nOrder_Year\n971\n-40,693, 43,245\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\n\nFormula\n\\[\nSalesChannel_i = \\beta_0 + \\beta_1TotalProfit + \\epsilon_i\n\\]"
+    "text": "Quantitative Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nOrder_Year\n764\n-39,321, 42,843\n\n\nSales_Channel\n\n\n\n\n\n\n    Sales_ChannelOnline\n-114,969\n-294,935, 58,348\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\n\nFormula\n\\[\nSalesChannel_i = \\beta_0 + \\beta_1TotalProfit + \\epsilon_i\n\\]"
   },
   {
     "objectID": "Visual-analysis.html#explanation-of-regression-table",
@@ -46,14 +39,28 @@
     "href": "index.html",
     "title": "Amazon Sales Profit Prediction",
     "section": "",
-    "text": "Sales Profit by preferred Sales Channels have grown tremendously. I gathered information from Amazon Sales Kaggle dataset, covering 100 occurred sales throughout years from 2010 to 2019. we used this information to predict the result of sales profits in upcoming years depending on sales channels. We modeled Total Profit, a numerical variable, as a linear function of Order Years. As year increases Profit seams to increase. The Sales Profit in the Online Sales Channel is predicted to be increasing by $971 as each year advance, but this depends on external factors that might change the income profit for Amazon."
+    "text": "Sales profits from preferred sales channels have grown significantly. I gathered data from the Amazon Sales Kaggle dataset, covering 100 sales from 2010 to 2019. Using this information, we predicted future sales profits based on two main sales channels: Online and Offline. We modeled Total Profit, a numerical variable, as a linear function of Order Year. As the years progress, profits appear to increase. Specifically, sales profits in the Online Sales Channel are predicted to rise by $971 each year. However, this projection is subject to external factors that could influence Amazon’s profit margins."
   },
   {
     "objectID": "index.html#introduction",
     "href": "index.html#introduction",
     "title": "Amazon Sales Profit Prediction",
     "section": "",
-    "text": "Sales Profit by preferred Sales Channels have grown tremendously. I gathered information from Amazon Sales Kaggle dataset, covering 100 occurred sales throughout years from 2010 to 2019. we used this information to predict the result of sales profits in upcoming years depending on sales channels. We modeled Total Profit, a numerical variable, as a linear function of Order Years. As year increases Profit seams to increase. The Sales Profit in the Online Sales Channel is predicted to be increasing by $971 as each year advance, but this depends on external factors that might change the income profit for Amazon."
+    "text": "Sales profits from preferred sales channels have grown significantly. I gathered data from the Amazon Sales Kaggle dataset, covering 100 sales from 2010 to 2019. Using this information, we predicted future sales profits based on two main sales channels: Online and Offline. We modeled Total Profit, a numerical variable, as a linear function of Order Year. As the years progress, profits appear to increase. Specifically, sales profits in the Online Sales Channel are predicted to rise by $971 each year. However, this projection is subject to external factors that could influence Amazon’s profit margins."
+  },
+  {
+    "objectID": "index.html#plot-for-online",
+    "href": "index.html#plot-for-online",
+    "title": "Amazon Sales Profit Prediction",
+    "section": "Plot for Online",
+    "text": "Plot for Online"
+  },
+  {
+    "objectID": "index.html#plot-for-offline",
+    "href": "index.html#plot-for-offline",
+    "title": "Amazon Sales Profit Prediction",
+    "section": "Plot for Offline",
+    "text": "Plot for Offline\n\n\nWarning: Removed 8 rows containing non-finite outside the scale range\n(`stat_smooth()`).\n\n\nWarning: Removed 8 rows containing missing values or values outside the scale range\n(`geom_point()`)."
   },
   {
     "objectID": "about.html",
