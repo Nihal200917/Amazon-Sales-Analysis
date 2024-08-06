@@ -39,14 +39,14 @@
     "href": "index.html",
     "title": "Amazon Sales Profit Prediction",
     "section": "",
-    "text": "Sales Profit by preferred Sales Channels have grown tremendously. I gathered information from Amazon Sales Kaggle dataset, covering 100 occurred sales throughout years from 2010 to 2019. we used this information to predict the result of sales profits in upcoming years depending on sales channels. We modeled Total Profit, a numerical variable, as a linear function of Order Years. As year increases Profit seams to increase as the year advances. The Sales Profit in the Online Sales Channel is predicted to be increasing by __ percent."
+    "text": "Sales Profit by preferred Sales Channels have grown tremendously. I gathered information from Amazon Sales Kaggle dataset, covering 100 occurred sales throughout years from 2010 to 2019. we used this information to predict the result of sales profits in upcoming years depending on sales channels. We modeled Total Profit, a numerical variable, as a linear function of Order Years. As year increases Profit seams to increase as the year advances."
   },
   {
     "objectID": "index.html#introduction",
     "href": "index.html#introduction",
     "title": "Amazon Sales Profit Prediction",
     "section": "",
-    "text": "Sales Profit by preferred Sales Channels have grown tremendously. I gathered information from Amazon Sales Kaggle dataset, covering 100 occurred sales throughout years from 2010 to 2019. we used this information to predict the result of sales profits in upcoming years depending on sales channels. We modeled Total Profit, a numerical variable, as a linear function of Order Years. As year increases Profit seams to increase as the year advances. The Sales Profit in the Online Sales Channel is predicted to be increasing by __ percent."
+    "text": "Sales Profit by preferred Sales Channels have grown tremendously. I gathered information from Amazon Sales Kaggle dataset, covering 100 occurred sales throughout years from 2010 to 2019. we used this information to predict the result of sales profits in upcoming years depending on sales channels. We modeled Total Profit, a numerical variable, as a linear function of Order Years. As year increases Profit seams to increase as the year advances."
   },
   {
     "objectID": "index.html#central-questions",
