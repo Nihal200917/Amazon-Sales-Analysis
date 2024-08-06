@@ -81,7 +81,7 @@
     "href": "about.html#about-this-project",
     "title": "About",
     "section": "About this Project",
-    "text": "About this Project\nThis project was created as part of Kane’s Free Data Science Bootcamp, A free bootcamp that teaches the basics of Data Science as an 8-week course.\n\\[\n\\text{Sales_Channel}_i = \\beta_0 + \\beta_1\\text{Total_Profit} + \\epsilon_i\n\\]"
+    "text": "About this Project\nThis project was created as part of Kane’s Free Data Science Bootcamp, A free bootcamp that teaches the basics of Data Science as an 8-week course."
   },
   {
     "objectID": "source.html",
