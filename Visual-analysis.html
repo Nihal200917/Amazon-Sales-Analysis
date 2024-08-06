@@ -157,7 +157,6 @@ window.Quarto = {
   <li><a href="#formula" id="toc-formula" class="nav-link" data-scroll-target="#formula">Formula</a></li>
   </ul></li>
   <li><a href="#explanation-of-regression-table" id="toc-explanation-of-regression-table" class="nav-link" data-scroll-target="#explanation-of-regression-table">Explanation of regression table</a></li>
-  <li><a href="#posterior-perdictive-check" id="toc-posterior-perdictive-check" class="nav-link" data-scroll-target="#posterior-perdictive-check">Posterior Perdictive Check</a></li>
   </ul>
 </nav>
     </div>
@@ -731,10 +730,8 @@ TotalProfit_i = \beta_0 + \beta_1SalesChannel + \beta_2OrderYear + \epsilon_i
 </section>
 <section id="explanation-of-regression-table" class="level2">
 <h2 class="anchored" data-anchor-id="explanation-of-regression-table">Explanation of regression table</h2>
-<p>The output from your Bayesian regression model indicates that the predictor Order_Year has an estimated effect of increasing the outcome variable, likely total profit, by 971 units for each additional year. However, the 95% Credible Interval for this effect is wide, ranging from -40,693 to 43,245, suggesting significant uncertainty. This implies that the true effect of Order_Year could be either negative, positive, or close to zero.</p>
-</section>
-<section id="posterior-perdictive-check" class="level2">
-<h2 class="anchored" data-anchor-id="posterior-perdictive-check">Posterior Perdictive Check</h2>
+<p>The regression results provide an insight into the relationship between the predictor variables—Order Year and Sales Channel—and the predicted Total Profit. The estimated coefficient (Beta) for Order Year is 764, with a 95% Credible Interval (CI) ranging from -39,321 to 42,843. This wide interval, which includes zero, suggests that the effect of Order Year on Total Profit is uncertain, indicating no clear evidence of a positive or negative trend over time.</p>
+<p>For the Sales Channel variable, the category Online has an estimated coefficient of -114,969 with a 95% CI of -294,935 to 58,348. This suggests that, on average, online sales may be associated with a decrease in Total Profit compared to the baseline (likely offline or another sales channel), but the large interval again includes zero, indicating considerable uncertainty. ## Posterior Perdictive Check</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>Using 10 posterior draws for ppc type 'dens_overlay' by default.</code></pre>
