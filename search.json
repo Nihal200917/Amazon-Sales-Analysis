@@ -18,7 +18,7 @@
     "href": "Visual-analysis.html#quantitative-analysis",
     "title": "Visual Analysis",
     "section": "Quantitative Analysis",
-    "text": "Quantitative Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nOrder_Year\n764\n-39,321, 42,843\n\n\nSales_Channel\n\n\n\n\n\n\n    Sales_ChannelOnline\n-114,969\n-294,935, 58,348\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\n\nFormula\n\\[\nSalesChannel_i = \\beta_0 + \\beta_1TotalProfit + \\epsilon_i\n\\]"
+    "text": "Quantitative Analysis\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\n1\n\n\n\n\nOrder_Year\n764\n-39,321, 42,843\n\n\nSales_Channel\n\n\n\n\n\n\n    Sales_ChannelOnline\n-114,969\n-294,935, 58,348\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\n\nFormula\n\\[\nTotalProfit_i = \\beta_0 + \\beta_1SalesChannel + \\beta_2OrderYear + \\epsilon_i\n\\]"
   },
   {
     "objectID": "Visual-analysis.html#explanation-of-regression-table",
