@@ -90,6 +90,8 @@ plot4 <- fit_x2 |>
 plot4
 ```
 
+This graph visualizes the predicted total profit over different order years for online sales, showing the trend based on Bayesian regression analysis. The points represent individual predictions, and the smooth line indicates the general trend over time, highlighting an overall pattern in the online sales channel.
+
 ```{r}
 #| label: model4
 #| message: false
@@ -115,6 +117,8 @@ plot5 <- fit_x2 |>
   )
 plot5
 ```
+
+The graph shows the predicted total profit for offline sales over various order years, derived from a Bayesian regression model. The individual points represent specific predictions for each year, with the color and size highlighting their distribution. The smooth line provides an overall trend, showing how total profits in the offline sales channel have changed over time
 
 ## Central Question
 This plot answers our general/central question which answers how the profit increasing trend would be during upcoming years.
