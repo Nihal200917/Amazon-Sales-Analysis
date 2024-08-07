@@ -25,7 +25,14 @@
     "href": "Visual-analysis.html#explanation-of-regression-table",
     "title": "Visual Analysis",
     "section": "Explanation of regression table",
-    "text": "Explanation of regression table\nThe regression results provide an insight into the relationship between the predictor variables—Order Year and Sales Channel—and the predicted Total Profit. The estimated coefficient (Beta) for Order Year is 764, with a 95% Credible Interval (CI) ranging from -39,321 to 42,843. This wide interval, which includes zero, suggests that the effect of Order Year on Total Profit is uncertain, indicating no clear evidence of a positive or negative trend over time.\nFor the Sales Channel variable, the category Online has an estimated coefficient of -114,969 with a 95% CI of -294,935 to 58,348. This suggests that, on average, online sales may be associated with a decrease in Total Profit compared to the baseline (likely offline or another sales channel), but the large interval again includes zero, indicating considerable uncertainty. ## Posterior Perdictive Check\n\n\nUsing 10 posterior draws for ppc type 'dens_overlay' by default."
+    "text": "Explanation of regression table\nThe regression results provide an insight into the relationship between the predictor variables—Order Year and Sales Channel—and the predicted Total Profit. The estimated coefficient (Beta) for Order Year is 764, with a 95% Credible Interval (CI) ranging from -39,321 to 42,843. This wide interval, which includes zero, suggests that the effect of Order Year on Total Profit is uncertain, indicating no clear evidence of a positive or negative trend over time.\nFor the Sales Channel variable, the category Online has an estimated coefficient of -114,969 with a 95% CI of -294,935 to 58,348. This suggests that, on average, online sales may be associated with a decrease in Total Profit compared to the baseline (likely offline or another sales channel), but the large interval again includes zero, indicating considerable uncertainty."
+  },
+  {
+    "objectID": "Visual-analysis.html#posterior-perdictive-check",
+    "href": "Visual-analysis.html#posterior-perdictive-check",
+    "title": "Visual Analysis",
+    "section": "Posterior Perdictive Check",
+    "text": "Posterior Perdictive Check\n\n\nUsing 10 posterior draws for ppc type 'dens_overlay' by default."
   },
   {
     "objectID": "index.html",
