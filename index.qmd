@@ -123,6 +123,10 @@ plot2 <- fit_x2 |>
 plot2
 ```
 
+### Explanation
+
+This graph visualizes the predicted total profit for the "Online" sales channel over various order years. The orange points represent individual predictions, while the maroon smooth line, created using a generalized additive model (GAM), illustrates the overall trend. The y-axis, ranging from -500,000 to 1,000,000, captures both potential losses and profits. The spread of points around the smooth line indicates variability in predictions, with the line suggesting whether profits are expected to rise, fall, or show a more complex pattern over time. The clean, classic theme ensures focus on the data, with clear labeling and a centered title.
+
 ## Plot for Offline
 
 ```{r}
@@ -153,3 +157,7 @@ plot3 <- fit_x2 |>
   )
 plot3
 ```
+
+### Explanation
+
+This plot visualizes the predicted total profit for the "Offline" sales channel over various order years. Green points represent individual profit predictions, while a dark green smoothing line shows the overall trend using a generalized additive model (GAM). The y-axis, ranging from 0 to 800,000, highlights positive profits, with data filtered to exclude missing or extreme values. The plot, using a clean and minimalistic theme, indicates how predicted profits for offline sales change over time, revealing both the trend and the variability in the model's predictions.
