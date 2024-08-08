@@ -4,28 +4,28 @@
     "href": "Visual-analysis.html",
     "title": "Visual Analysis",
     "section": "",
-    "text": "This graph visualizes the predicted total profit over different order years for online sales, showing the trend based on Bayesian regression analysis. The points represent individual predictions, and the smooth line indicates the general trend over time, highlighting an overall pattern in the online sales channel. Online Sales have cost effective prices therefore profit is low but has a increasing trend.\n\n\n\n\n\n\n\n\n\nThe graph shows the predicted total profit for offline sales over various order years, derived from a Bayesian regression model. The individual points represent specific predictions for each year, with the color and size highlighting their distribution. The smooth line provides an overall trend, showing how total profits in the offline sales channel have changed over time. Offline Sales have products with higher prices, therefore more profit but fluctuating trend between increasing and decreasing profits"
+    "text": "This graph visualizes the predicted total profit over different order years for online sales, showing the trend based on Bayesian regression analysis. The points represent individual predictions, and the smooth line indicates the general trend over time, highlighting an overall pattern in the online sales channel.\n\n\n\n\n\n\n\n\n\nThe graph shows the predicted total profit for offline sales over various order years, derived from a Bayesian regression model. The individual points represent specific predictions for each year, with the color and size highlighting their distribution. The smooth line provides an overall trend, showing how total profits in the offline sales channel have changed over time."
   },
   {
     "objectID": "Visual-analysis.html#fitted-model",
     "href": "Visual-analysis.html#fitted-model",
     "title": "Visual Analysis",
     "section": "",
-    "text": "This graph visualizes the predicted total profit over different order years for online sales, showing the trend based on Bayesian regression analysis. The points represent individual predictions, and the smooth line indicates the general trend over time, highlighting an overall pattern in the online sales channel. Online Sales have cost effective prices therefore profit is low but has a increasing trend.\n\n\n\n\n\n\n\n\n\nThe graph shows the predicted total profit for offline sales over various order years, derived from a Bayesian regression model. The individual points represent specific predictions for each year, with the color and size highlighting their distribution. The smooth line provides an overall trend, showing how total profits in the offline sales channel have changed over time. Offline Sales have products with higher prices, therefore more profit but fluctuating trend between increasing and decreasing profits"
+    "text": "This graph visualizes the predicted total profit over different order years for online sales, showing the trend based on Bayesian regression analysis. The points represent individual predictions, and the smooth line indicates the general trend over time, highlighting an overall pattern in the online sales channel.\n\n\n\n\n\n\n\n\n\nThe graph shows the predicted total profit for offline sales over various order years, derived from a Bayesian regression model. The individual points represent specific predictions for each year, with the color and size highlighting their distribution. The smooth line provides an overall trend, showing how total profits in the offline sales channel have changed over time."
   },
   {
     "objectID": "Visual-analysis.html#central-question",
     "href": "Visual-analysis.html#central-question",
     "title": "Visual Analysis",
     "section": "Central Question",
-    "text": "Central Question\nThis plot answers our general/central question which answers how the profit increasing trend would be during upcoming years."
+    "text": "Central Question\nThe plot below will answer our general/central question which is, how the profit increasing trend would be during upcoming years for both sales channels."
   },
   {
     "objectID": "Visual-analysis.html#graph-explanation",
     "href": "Visual-analysis.html#graph-explanation",
     "title": "Visual Analysis",
     "section": "Graph Explanation",
-    "text": "Graph Explanation\nThe plot visualizes the predictions from a Bayesian regression model where total profit is modeled as a function of order year using a Gaussian distribution. The blue points represent the model’s predicted profits for each year from 2010 to 2026, while the red LOESS curve smooths these predictions to reveal the overall trend. The plot, with its clear axis labels, centered title, and styled caption, suggests how the model expects total profit to evolve over time, providing valuable insights into potential profit trends and helping guide future business decisions. The inclusion of a LOESS curve in the plot adds a nuanced layer of analysis by highlighting potential non-linear patterns that a simple linear regression might overlook. This is particularly important in financial forecasting, where trends can fluctuate due to various external factors. The Bayesian framework further strengthens the model by incorporating prior information and providing a probabilistic interpretation of the predictions, which can help in assessing uncertainty and making more informed decisions. Together, these elements make the plot a powerful tool for visualizing and understanding the complex dynamics of profit trends over time, offering both immediate insights and a foundation for deeper analysis."
+    "text": "Graph Explanation\nThe plot visualizes the predictions from a Bayesian regression model where total profit is modeled as a function of order year using a Gaussian distribution. The blue points represent the model’s predicted profits for each year from 2010 to 2026, while the red LOESS curve smooths these predictions to reveal the overall trend. The plot, with its clear axis labels, centered title, and styled caption, suggests how the model expects total profit to evolve over time, providing valuable insights into potential profit trends and helping guide future business decisions."
   },
   {
     "objectID": "Visual-analysis.html#quantitative-analysis",
@@ -53,21 +53,21 @@
     "href": "index.html",
     "title": "Amazon Sales Profit Prediction",
     "section": "",
-    "text": "Sales profits from preferred sales channels have grown significantly. I gathered data from the Amazon Sales Kaggle dataset, covering 100 sales from 2010 to 2019. Using this information, we predicted future sales profits based on two main sales channels: Online and Offline. We modeled Total Profit, a numerical variable, as a linear function of Order Year. As the years progress, profits appear to increase. In conclusion, sales profits on both Sales Channel combined are predicted to rise by 764 with 95% Credible Interval ranging from -39321.15 units and 42843.28 units each year. This projection is subject to external factors that could influence Amazon’s profit margins."
+    "text": "Sales profits from preferred sales channels have grown significantly. I gathered data from the Amazon Sales Kaggle dataset, covering 100 sales from 2010 to 2019. Using this information, we predicted future sales profits based on two main sales channels: Online and Offline. We modeled Total Profit, a numerical variable, as a linear function of Order Year. As the years progress, profits appear to increase. In conclusion, sales profits on both Sales Channel combined are predicted to rise by 764 unit each year with uncertainty varying from as low as 153.64% and as high as 307.29%. These rates are subject to external factors that could influence Amazon’s profit margins."
   },
   {
     "objectID": "index.html#plot-for-online",
     "href": "index.html#plot-for-online",
     "title": "Amazon Sales Profit Prediction",
     "section": "Plot for Online",
-    "text": "Plot for Online\n\n\n\n\n\n\n\n\n\n\nExplanation\nThis graph visualizes the predicted total profit for the “Online” sales channel over various order years. The orange points represent individual predictions, while the maroon smooth line, created using a generalized additive model (GAM), illustrates the overall trend. The y-axis, ranging from -500,000 to 1,000,000, captures both potential losses and profits. The spread of points around the smooth line indicates variability in predictions, with the line suggesting whether profits are expected to rise, fall, or show a more complex pattern over time. The clean, classic theme ensures focus on the data, with clear labeling and a centered title."
+    "text": "Plot for Online\n\n\n\n\n\n\n\n\n\n\nExplanation\nThis graph visualizes the predicted total profit for the “Online” sales channel over various order years. The orange points represent individual predictions, while the maroon smooth line, created using a generalized additive model (GAM), illustrates the overall trend. The y-axis, ranging from -500,000 to 1,000,000, captures both potential losses and profits. The spread of points around the smooth line indicates variability in predictions, with the line suggesting whether profits are expected to rise, fall, or show a more complex pattern over time."
   },
   {
     "objectID": "index.html#plot-for-offline",
     "href": "index.html#plot-for-offline",
     "title": "Amazon Sales Profit Prediction",
     "section": "Plot for Offline",
-    "text": "Plot for Offline\n\n\n\n\n\n\n\n\n\n\nExplanation\nThis plot visualizes the predicted total profit for the “Offline” sales channel over various order years. Green points represent individual profit predictions, while a dark green smoothing line shows the overall trend using a generalized additive model (GAM). The y-axis, ranging from 0 to 800,000, highlights positive profits, with data filtered to exclude missing or extreme values. The plot, using a clean and minimalistic theme, indicates how predicted profits for offline sales change over time, revealing both the trend and the variability in the model’s predictions."
+    "text": "Plot for Offline\n\n\n\n\n\n\n\n\n\n\nExplanation\nThis plot visualizes the predicted total profit for the “Offline” sales channel over various order years. Green points represent individual profit predictions, while a dark green smoothing line shows the overall trend using a generalized additive model (GAM). The y-axis, ranging from 0 to 800,000, highlights positive profits, with data filtered to exclude missing or extreme values. The plot, indicates how predicted profits for offline sales change over time, revealing both the trend and the variability in the model’s predictions."
   },
   {
     "objectID": "about.html",
